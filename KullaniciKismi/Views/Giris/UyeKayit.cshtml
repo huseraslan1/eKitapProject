@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewBag.Title = "UyeKayit";
+    Layout = "";
+}
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Kitap</title>
+
+
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/css/prettyPhoto.css" rel="stylesheet" />
+    <link href="~/Content/css/price-range.css" rel="stylesheet" />
+    <link href="~/Content/css/animate.css" rel="stylesheet" />
+    <link href="~/Content/css/main.css" rel="stylesheet" />
+    <link href="~/Content/css/responsive.css" rel="stylesheet" />
+
+
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+</head>
+
+@Html.Partial("_UstMenu")
+
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <h2>Üye Kayıt</h2>
+                <div class="card-body">
+
+                    <form class="form-horizontal" method="post">
+
+                        <div class="form-group">
+                            <label class="cols-sm-2 control-label">Adınız :</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" name="Adi" id="Adi" placeholder="Adınız" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="cols-sm-2 control-label">Soyadınız</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" name="Soyadi" id="Soyadi" placeholder="Soyadınız" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="cols-sm-2 control-label">Eposta :</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                    <input type="email" class="form-control" name="Eposta" id="Eposta" placeholder="Eposta" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="cols-sm-2 control-label">Şifre :</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                    <input type="password" class="form-control" name="Sifre" id="Sifre" placeholder="Şifre" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group ">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Üye Ol</button>
+                        </div>
+                       
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Content/js/jquery.js"></script>
+<script src="~/Content/js/bootstrap.min.js"></script>
+<script src="~/Content/js/jquery.scrollUp.min.js"></script>
+<script src="~/Content/js/price-range.js"></script>
+<script src="~/Content/js/jquery.prettyPhoto.js"></script>
+<script src="~/Content/js/main.js"></script>

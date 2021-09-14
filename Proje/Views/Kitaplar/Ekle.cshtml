@@ -1,0 +1,255 @@
+﻿@model  List<Proje.Models.Kitaplar>
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" />
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <link href="~/Content/vendor/bootstrap/js/bootstrap.bundle.min.js.map" />
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+
+
+</head>
+
+
+
+
+<div class="row">
+    <div class="col-md-12 col-sm-12">
+        <div class="card-body">
+            <div class="x_title">
+
+                <h2>Kitap Ekle</h2>
+
+                <div class="form-group">
+                    <label>Kitap Adı</label>
+                    <input type="text" name="Adi" id="KitapAdi" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label>Kategori seçiniz</label>
+                    <select id="KategoriID" name="KategoriID" class="form-control">
+
+                        <option value="-1" selected="selected">Seçiniz</option>
+                        @foreach (var item in ViewBag.kategori)
+                        {
+                            <option value="@item.Id">@item.Tanim</option>
+
+                        }
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Fiyat</label>
+                    <input type="number" name="fiyat" id="fiyat" class="form-control" required />
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label>Stok Kodu</label>
+                <input type="text" name="StokKodu" id="StokKodu" class="form-control" required />
+            </div>
+
+            <div class="form-group">
+                <label>Resim</label>
+                <input type="file" name="Resim" id="Resim" class="form-control" multiple required />
+                <img src="" id="SecilenResim" style="width:100px" />
+
+            </div>
+
+            <div class="form-group">
+                <label>Açıklama</label>
+                <textarea rows="5" name="Aciklama" id="Aciklama" class="form-control" required></textarea>
+            </div>
+
+
+            <div class="form-group">
+                <label>Toplam Adet</label>
+                <input type="text" name="Adet" id="Adet" class="form-control" required />
+            </div>
+
+            <div class="form-group">
+                <label>YayınEvi seçiniz</label>
+                <select id="YayinEviID" name="YayinEviID" class="form-control">
+
+                    <option value="-1" selected="selected">Seçiniz</option>
+                    @foreach (var item in ViewBag.yayinEvi)
+                    {
+                        <option value="@item.Id">@item.Tanim</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Sayfa Sayısı</label>
+                <input type="text" name="sayfaSayisi" id="sayfaSayisi" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <label>Yazar</label>
+                <input type="text" name="Yazar" id="Yazar" class="form-control" required />
+            </div>
+            <button type="submit" class="btn btn-primary" id="KitapEkle">Kaydet</button>
+
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+     $("#KategoriID").change(function () {
+        var secilenID = $("#KategoriID option:selected").val();
+        var secilenText = $("#KategoriID option:selected").text();
+
+        if (secilenID == -1) {
+            alert("Lütfen Kategori Seçin");
+        }
+        else {
+
+
+            $.ajax({
+                type: "POST",
+                url: "/Kitaplar/Kategori",
+                data: JSON.stringify({ KategoriID: secilenID }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (sonuc) {
+
+                    $("#KategoriID").html("");
+                    $.each($.parseJSON(sonuc), function (i, kategori) {
+                        $("#KategoriID").append($('<option></option>').val(kategori.Id).html(kategori.Tanim));
+                    })
+
+                },
+                error: function (sonuc) {
+                    alert("Hata Oluştu.");
+                }
+
+            });
+
+        }
+
+    });
+
+   $("#YayinEviID").change(function () {
+        var secilenID = $("#YayinEviID option:selected").val();
+        var secilenText = $("#YayinEviID option:selected").text();
+
+        if (secilenID == -1) {
+            alert("Lütfen Kategori Seçin");
+        }
+        else {
+
+
+            $.ajax({
+                type: "POST",
+                url: "/Kitaplar/YayinEviGetir",
+                data: JSON.stringify({ YayinEviID: secilenID }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (sonuc) {
+
+                    $("#YayinEviID").html("");
+                    $.each($.parseJSON(sonuc), function (i, yayinEvi) {
+                        $("#YayinEviID").append($('<option></option>').val(yayinEvi.Id).html(yayinEvi.Tanim));
+                    })
+
+                },
+                error: function (sonuc) {
+                    alert("Hata Oluştu.");
+                }
+
+            });
+
+        }
+
+    });
+
+    $("#KitapAdi").blur(function () {
+        var kitapadi = $("#KitapAdi").val();
+        if (kitapadi == "") {
+
+            alert("Lütfen Kitap Adı Giriniz");
+        }
+
+    });
+
+    $("#Resim").change(function () {
+        ResimOku(this);
+        ResimYukle();
+    });
+
+    function ResimOku(input) {
+
+        if (input.files && input.files[0]) {
+            var oku = new FileReader();
+            oku.onload = function (e) {
+                $('#SecilenResim').attr('src', e.target.result);
+            }
+            oku.readAsDataURL(input.files[0]);
+        }
+    }
+
+    function ResimYukle() {
+        var fileUpload = $("#Resim").get(0);
+        var files = fileUpload.files;
+
+        var fileData = new FormData();
+
+        for (var i = 0; i < files.length; i++) {
+            fileData.append(files[i].name, files[i]);
+        }
+
+        $.ajax({
+            url: '/Kitaplar/ResimYukle',
+            type: "POST",
+            contentType: false,
+            processData: false,
+            data: fileData,
+            success: function (sonuc) {
+                resim = sonuc;
+            },
+            error: function (err) {
+                alert(err.statusText);
+            }
+        });
+    };
+
+    var resim = "";
+
+
+    $("#KitapEkle").click(function () {
+        debugger
+        var kitap = {
+            Adi: $("#KitapAdi").val(),
+            KategoriID: $("#KategoriID").val(),
+            fiyat: $("#fiyat").val(),
+            Aciklama: $("#Aciklama").val(),
+            StokKodu: $("#StokKodu").val(),
+            Adet: $("#Adet").val(),
+            resim: resim,
+            Yazar: $("#Yazar").val(),
+            sayfaSayisi: $("#sayfaSayisi").val(),
+            YayinEviID: $("#YayinEviID").val(),
+        }
+        debugger
+        $.ajax({
+            type: "POST",
+            url: "/Kitaplar/Ekle",
+            data: JSON.stringify(kitap),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (msj) {
+                alert(msj);
+            },
+            error: function (msj) {
+                alert("Kitap Eklendi");
+            }
+
+        });
+    });
+
+
+</script>
+

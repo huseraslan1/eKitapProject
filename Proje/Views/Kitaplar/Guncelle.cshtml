@@ -1,0 +1,79 @@
+﻿@model Proje.Models.Kitaplar
+@{
+    ViewBag.Title = "Guncelle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <div class="container">
+                <div class="x_title">
+                    @using (Html.BeginForm("Guncelle", "Kitaplar", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+
+
+                    <h3>Güncelle</h3> <hr />
+                        <input type="file" name="file" />
+                        <br />
+                        <input type="hidden" name="Resim" value="@Model.Resim" class="form-control" multiple required /> <br />
+
+                        <input type="submit" value="Resim Güncelle" />
+
+                    }
+
+                    <form method="post">
+
+                        <div class="form-group">                           
+                            <input type="hidden" name="Resim" value="@Model.Resim" class="form-control" multiple required />
+                            <img src="http://localhost:54288/\Content\resim\@Model.Resim.Split(';')[0]" alt="@Model.Adi" style="height:200px;width:250px" class="avatar img-circle img-thumbnail" />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Kitap Adı</label>
+                            <input type="text" name="Adi" value="@Model.Adi" class="form-control" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Kategori</label>
+                            @Html.DropDownList("KategoriID", (List<SelectListItem>)ViewBag.kategori, htmlAttributes: new { @class = "form-control" })
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label>Fiyat</label>
+                            <input type="text" name="fiyat" value="@Model.fiyat" class="form-control" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Yazar</label>
+                            <input type="text" name="Yazar" value="@Model.Yazar" class="form-control" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Stok Kodu</label>
+                            <input type="text" name="StokKodu" value="@Model.StokKodu" class="form-control" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Adet</label>
+                            <input type="text" name="Adet" value="@Model.Adet" class="form-control" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Açıklama</label>
+                            <textarea class="form-control" name="Aciklama" rows="5">@Model.Aciklama</textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>YayınEvleri</label>
+                            @Html.DropDownList("YayinEviID", (List<SelectListItem>)ViewBag.yayinEvi, htmlAttributes: new { @class = "form-control" })
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Kaydet</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+

@@ -1,0 +1,496 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KitapProjesiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Giris">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AdSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Eposta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DTarih" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Adminmi" Type="Boolean" />
+    <NavigationProperty Name="Musteri" Relationship="Self.FK_Musteri_Giris1" FromRole="Giris" ToRole="Musteri" />
+  </EntityType>
+  <EntityType Name="KargoFirmasi">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Sirket" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Adres" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Telefon" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Name="WebSitesi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Eposta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SiparisDetay" Relationship="Self.FK_SiparisDetay_KargoFirmasi" FromRole="KargoFirmasi" ToRole="SiparisDetay" />
+  </EntityType>
+  <EntityType Name="Kategoriler">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tanim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UstKategoriID" Type="Int32" />
+    <NavigationProperty Name="Kitaplar" Relationship="KitapProjesiModel.FK_Kitaplar_Kategoriler" FromRole="Kategoriler" ToRole="Kitaplar" />
+  </EntityType>
+  <EntityType Name="MailAyarlari">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GondericiBilgisi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Smtp_server" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Smtp_port" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="MailGonderici" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Eposta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EpostaSifresi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Musteri">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Soyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Eposta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DogumTarihi" Type="DateTime" Precision="3" />
+    <Property Name="Sifre" Type="String" MaxLength="35" FixedLength="false" Unicode="true" />
+    <Property Name="SepetID" Type="Int32" />
+    <Property Name="LoginID" Type="Int32" />
+    <Property Name="SiparisGecmisID" Type="Int32" />
+    <Property Name="YorumID" Type="Int32" />
+    <Property Name="TeslimatAdresi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Giris" Relationship="Self.FK_Musteri_Giris1" FromRole="Musteri" ToRole="Giris" />
+    <NavigationProperty Name="SepetID1" Relationship="Self.FK_Musteri_SepetID" FromRole="Musteri" ToRole="SepetID" />
+    <NavigationProperty Name="SiparisGecmisi" Relationship="Self.FK_Musteri_SiparisGecmisi" FromRole="Musteri" ToRole="SiparisGecmisi" />
+    <NavigationProperty Name="Siparis" Relationship="Self.FK_Siparis_Musteri" FromRole="Musteri" ToRole="Siparis" />
+    <NavigationProperty Name="Yorumlar" Relationship="Self.FK_Yorumlar_Musteri" FromRole="Musteri" ToRole="Yorumlar" />
+  </EntityType>
+  <EntityType Name="OdemeYontemi">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tanim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Aciklama" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Siparis" Relationship="Self.FK_Siparis_OdemeYontemi" FromRole="OdemeYontemi" ToRole="Siparis" />
+    <NavigationProperty Name="SiparisDetay" Relationship="Self.FK_SiparisDetay_OdemeYontemi" FromRole="OdemeYontemi" ToRole="SiparisDetay" />
+  </EntityType>
+  <EntityType Name="Seo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Baslik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Isım" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Harita" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AnahtarKelime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="SepetID">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KitapID" Type="Int32" />
+    <Property Name="YayinEviID" Type="Int32" />
+    <Property Name="Miktar" Type="Int32" />
+    <NavigationProperty Name="Musteri" Relationship="Self.FK_Musteri_SepetID" FromRole="SepetID" ToRole="Musteri" />
+  </EntityType>
+  <EntityType Name="Siparis">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MusteriID" Type="Int32" />
+    <Property Name="SiparisDurumuID" Type="Int32" />
+    <Property Name="KargoTakip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OdemeYontemiID" Type="Int32" />
+    <Property Name="SepetDetayID" Type="Int32" />
+    <NavigationProperty Name="Musteri" Relationship="Self.FK_Siparis_Musteri" FromRole="Siparis" ToRole="Musteri" />
+    <NavigationProperty Name="OdemeYontemi" Relationship="Self.FK_Siparis_OdemeYontemi" FromRole="Siparis" ToRole="OdemeYontemi" />
+    <NavigationProperty Name="SiparisDetay" Relationship="Self.FK_Siparis_SiparisDetay" FromRole="Siparis" ToRole="SiparisDetay" />
+    <NavigationProperty Name="SiparisDurumu" Relationship="Self.FK_Siparis_SiparisDurumu" FromRole="Siparis" ToRole="SiparisDurumu" />
+  </EntityType>
+  <EntityType Name="SiparisDetay">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KitapID" Type="Int32" />
+    <Property Name="YayinEviID" Type="Int32" />
+    <Property Name="Fiyat" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Miktar" Type="Int32" />
+    <Property Name="KargoID" Type="Int32" />
+    <Property Name="OdemeYontemiID" Type="Int32" />
+    <NavigationProperty Name="KargoFirmasi" Relationship="Self.FK_SiparisDetay_KargoFirmasi" FromRole="SiparisDetay" ToRole="KargoFirmasi" />
+    <NavigationProperty Name="OdemeYontemi" Relationship="Self.FK_SiparisDetay_OdemeYontemi" FromRole="SiparisDetay" ToRole="OdemeYontemi" />
+    <NavigationProperty Name="Siparis" Relationship="Self.FK_Siparis_SiparisDetay" FromRole="SiparisDetay" ToRole="Siparis" />
+    <NavigationProperty Name="YayinEvleri" Relationship="Self.FK_SiparisDetay_YayinEvleri" FromRole="SiparisDetay" ToRole="YayinEvleri" />
+    <NavigationProperty Name="Kitaplar" Relationship="KitapProjesiModel.FK_SiparisDetay_Kitaplar" FromRole="SiparisDetay" ToRole="Kitaplar" />
+  </EntityType>
+  <EntityType Name="SiparisDurumu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tanim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Detay" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Siparis" Relationship="Self.FK_Siparis_SiparisDurumu" FromRole="SiparisDurumu" ToRole="Siparis" />
+  </EntityType>
+  <EntityType Name="SiparisGecmisi">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tanim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Detay" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Musteri" Relationship="Self.FK_Musteri_SiparisGecmisi" FromRole="SiparisGecmisi" ToRole="Musteri" />
+  </EntityType>
+  <EntityType Name="SiteAyarlari">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Adres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Eposta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TeslimatBilgileri">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tanim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Icerik" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Kitaplar" Relationship="KitapProjesiModel.FK_Kitaplar_TeslimatBilgileri" FromRole="TeslimatBilgileri" ToRole="Kitaplar" />
+  </EntityType>
+  <EntityType Name="YayinEvleri">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tanim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SiparisDetay" Relationship="Self.FK_SiparisDetay_YayinEvleri" FromRole="YayinEvleri" ToRole="SiparisDetay" />
+    <NavigationProperty Name="Kitaplar" Relationship="KitapProjesiModel.FK_Kitaplar_YayinEvleri" FromRole="YayinEvleri" ToRole="Kitaplar" />
+  </EntityType>
+  <EntityType Name="Yorumlar">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KitapID" Type="Int32" />
+    <Property Name="Yorum" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Tarih" Type="DateTime" Precision="3" />
+    <Property Name="MusteriID" Type="Int32" />
+    <NavigationProperty Name="Musteri" Relationship="Self.FK_Yorumlar_Musteri" FromRole="Yorumlar" ToRole="Musteri" />
+    <NavigationProperty Name="Kitaplar" Relationship="KitapProjesiModel.FK_Yorumlar_Kitaplar" FromRole="Yorumlar" ToRole="Kitaplar" />
+  </EntityType>
+  <Association Name="FK_Musteri_Giris1">
+    <End Role="Giris" Type="Self.Giris" Multiplicity="0..1" />
+    <End Role="Musteri" Type="Self.Musteri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Giris">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Musteri">
+        <PropertyRef Name="LoginID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SiparisDetay_KargoFirmasi">
+    <End Role="KargoFirmasi" Type="Self.KargoFirmasi" Multiplicity="0..1" />
+    <End Role="SiparisDetay" Type="Self.SiparisDetay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KargoFirmasi">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SiparisDetay">
+        <PropertyRef Name="KargoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Musteri_SepetID">
+    <End Role="SepetID" Type="Self.SepetID" Multiplicity="0..1" />
+    <End Role="Musteri" Type="Self.Musteri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SepetID">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Musteri">
+        <PropertyRef Name="SepetID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Musteri_SiparisGecmisi">
+    <End Role="SiparisGecmisi" Type="Self.SiparisGecmisi" Multiplicity="0..1" />
+    <End Role="Musteri" Type="Self.Musteri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SiparisGecmisi">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Musteri">
+        <PropertyRef Name="SiparisGecmisID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Siparis_Musteri">
+    <End Role="Musteri" Type="Self.Musteri" Multiplicity="0..1" />
+    <End Role="Siparis" Type="Self.Siparis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Musteri">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Siparis">
+        <PropertyRef Name="MusteriID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Yorumlar_Musteri">
+    <End Role="Musteri" Type="Self.Musteri" Multiplicity="0..1" />
+    <End Role="Yorumlar" Type="Self.Yorumlar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Musteri">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Yorumlar">
+        <PropertyRef Name="MusteriID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Siparis_OdemeYontemi">
+    <End Role="OdemeYontemi" Type="Self.OdemeYontemi" Multiplicity="0..1" />
+    <End Role="Siparis" Type="Self.Siparis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OdemeYontemi">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Siparis">
+        <PropertyRef Name="OdemeYontemiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SiparisDetay_OdemeYontemi">
+    <End Role="OdemeYontemi" Type="Self.OdemeYontemi" Multiplicity="0..1" />
+    <End Role="SiparisDetay" Type="Self.SiparisDetay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OdemeYontemi">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SiparisDetay">
+        <PropertyRef Name="OdemeYontemiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Siparis_SiparisDetay">
+    <End Role="SiparisDetay" Type="Self.SiparisDetay" Multiplicity="0..1" />
+    <End Role="Siparis" Type="Self.Siparis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SiparisDetay">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Siparis">
+        <PropertyRef Name="SepetDetayID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Siparis_SiparisDurumu">
+    <End Role="SiparisDurumu" Type="Self.SiparisDurumu" Multiplicity="0..1" />
+    <End Role="Siparis" Type="Self.Siparis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SiparisDurumu">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Siparis">
+        <PropertyRef Name="SiparisDurumuID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SiparisDetay_YayinEvleri">
+    <End Role="YayinEvleri" Type="Self.YayinEvleri" Multiplicity="0..1" />
+    <End Role="SiparisDetay" Type="Self.SiparisDetay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="YayinEvleri">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SiparisDetay">
+        <PropertyRef Name="YayinEviID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="KitapProjesiEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Giris" EntityType="Self.Giris" />
+    <EntitySet Name="KargoFirmasi" EntityType="Self.KargoFirmasi" />
+    <EntitySet Name="Kategoriler" EntityType="Self.Kategoriler" />
+    <EntitySet Name="MailAyarlari" EntityType="Self.MailAyarlari" />
+    <EntitySet Name="Musteri" EntityType="Self.Musteri" />
+    <EntitySet Name="OdemeYontemi" EntityType="Self.OdemeYontemi" />
+    <EntitySet Name="Seo" EntityType="Self.Seo" />
+    <EntitySet Name="SepetID" EntityType="Self.SepetID" />
+    <EntitySet Name="Siparis" EntityType="Self.Siparis" />
+    <EntitySet Name="SiparisDetay" EntityType="Self.SiparisDetay" />
+    <EntitySet Name="SiparisDurumu" EntityType="Self.SiparisDurumu" />
+    <EntitySet Name="SiparisGecmisi" EntityType="Self.SiparisGecmisi" />
+    <EntitySet Name="SiteAyarlari" EntityType="Self.SiteAyarlari" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="TeslimatBilgileri" EntityType="Self.TeslimatBilgileri" />
+    <EntitySet Name="YayinEvleri" EntityType="Self.YayinEvleri" />
+    <EntitySet Name="Yorumlar" EntityType="Self.Yorumlar" />
+    <AssociationSet Name="FK_Musteri_Giris1" Association="Self.FK_Musteri_Giris1">
+      <End Role="Giris" EntitySet="Giris" />
+      <End Role="Musteri" EntitySet="Musteri" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SiparisDetay_KargoFirmasi" Association="Self.FK_SiparisDetay_KargoFirmasi">
+      <End Role="KargoFirmasi" EntitySet="KargoFirmasi" />
+      <End Role="SiparisDetay" EntitySet="SiparisDetay" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Musteri_SepetID" Association="Self.FK_Musteri_SepetID">
+      <End Role="SepetID" EntitySet="SepetID" />
+      <End Role="Musteri" EntitySet="Musteri" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Musteri_SiparisGecmisi" Association="Self.FK_Musteri_SiparisGecmisi">
+      <End Role="SiparisGecmisi" EntitySet="SiparisGecmisi" />
+      <End Role="Musteri" EntitySet="Musteri" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Siparis_Musteri" Association="Self.FK_Siparis_Musteri">
+      <End Role="Musteri" EntitySet="Musteri" />
+      <End Role="Siparis" EntitySet="Siparis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Yorumlar_Musteri" Association="Self.FK_Yorumlar_Musteri">
+      <End Role="Musteri" EntitySet="Musteri" />
+      <End Role="Yorumlar" EntitySet="Yorumlar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Siparis_OdemeYontemi" Association="Self.FK_Siparis_OdemeYontemi">
+      <End Role="OdemeYontemi" EntitySet="OdemeYontemi" />
+      <End Role="Siparis" EntitySet="Siparis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SiparisDetay_OdemeYontemi" Association="Self.FK_SiparisDetay_OdemeYontemi">
+      <End Role="OdemeYontemi" EntitySet="OdemeYontemi" />
+      <End Role="SiparisDetay" EntitySet="SiparisDetay" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Siparis_SiparisDetay" Association="Self.FK_Siparis_SiparisDetay">
+      <End Role="SiparisDetay" EntitySet="SiparisDetay" />
+      <End Role="Siparis" EntitySet="Siparis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Siparis_SiparisDurumu" Association="Self.FK_Siparis_SiparisDurumu">
+      <End Role="SiparisDurumu" EntitySet="SiparisDurumu" />
+      <End Role="Siparis" EntitySet="Siparis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SiparisDetay_YayinEvleri" Association="Self.FK_SiparisDetay_YayinEvleri">
+      <End Role="YayinEvleri" EntitySet="YayinEvleri" />
+      <End Role="SiparisDetay" EntitySet="SiparisDetay" />
+    </AssociationSet>
+    <EntitySet Name="Kitaplar" EntityType="KitapProjesiModel.Kitaplar" />
+    <AssociationSet Name="FK_Kitaplar_Kategoriler" Association="KitapProjesiModel.FK_Kitaplar_Kategoriler">
+      <End Role="Kategoriler" EntitySet="Kategoriler" />
+      <End Role="Kitaplar" EntitySet="Kitaplar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kitaplar_TeslimatBilgileri" Association="KitapProjesiModel.FK_Kitaplar_TeslimatBilgileri">
+      <End Role="TeslimatBilgileri" EntitySet="TeslimatBilgileri" />
+      <End Role="Kitaplar" EntitySet="Kitaplar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kitaplar_YayinEvleri" Association="KitapProjesiModel.FK_Kitaplar_YayinEvleri">
+      <End Role="YayinEvleri" EntitySet="YayinEvleri" />
+      <End Role="Kitaplar" EntitySet="Kitaplar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SiparisDetay_Kitaplar" Association="KitapProjesiModel.FK_SiparisDetay_Kitaplar">
+      <End Role="Kitaplar" EntitySet="Kitaplar" />
+      <End Role="SiparisDetay" EntitySet="SiparisDetay" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Yorumlar_Kitaplar" Association="KitapProjesiModel.FK_Yorumlar_Kitaplar">
+      <End Role="Kitaplar" EntitySet="Kitaplar" />
+      <End Role="Yorumlar" EntitySet="Yorumlar" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Kitaplar">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Adi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="fiyat" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Resim" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="StokKodu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Adet" Type="Int32" />
+    <Property Name="KategoriID" Type="Int32" />
+    <Property Name="Yazar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SayfaSayisi" Type="Int32" />
+    <Property Name="YayinEviID" Type="Int32" />
+    <Property Name="TeslimatID" Type="Int32" />
+    <NavigationProperty Name="Kategoriler" Relationship="KitapProjesiModel.FK_Kitaplar_Kategoriler" FromRole="Kitaplar" ToRole="Kategoriler" />
+    <NavigationProperty Name="TeslimatBilgileri" Relationship="KitapProjesiModel.FK_Kitaplar_TeslimatBilgileri" FromRole="Kitaplar" ToRole="TeslimatBilgileri" />
+    <NavigationProperty Name="YayinEvleri" Relationship="KitapProjesiModel.FK_Kitaplar_YayinEvleri" FromRole="Kitaplar" ToRole="YayinEvleri" />
+    <NavigationProperty Name="SiparisDetay" Relationship="KitapProjesiModel.FK_SiparisDetay_Kitaplar" FromRole="Kitaplar" ToRole="SiparisDetay" />
+    <NavigationProperty Name="Yorumlar" Relationship="KitapProjesiModel.FK_Yorumlar_Kitaplar" FromRole="Kitaplar" ToRole="Yorumlar" />
+  </EntityType>
+  <Association Name="FK_Kitaplar_Kategoriler">
+    <End Type="KitapProjesiModel.Kategoriler" Role="Kategoriler" Multiplicity="0..1" />
+    <End Type="KitapProjesiModel.Kitaplar" Role="Kitaplar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategoriler">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Kitaplar">
+        <PropertyRef Name="KategoriID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kitaplar_TeslimatBilgileri">
+    <End Type="KitapProjesiModel.TeslimatBilgileri" Role="TeslimatBilgileri" Multiplicity="0..1" />
+    <End Type="KitapProjesiModel.Kitaplar" Role="Kitaplar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TeslimatBilgileri">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Kitaplar">
+        <PropertyRef Name="TeslimatID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kitaplar_YayinEvleri">
+    <End Type="KitapProjesiModel.YayinEvleri" Role="YayinEvleri" Multiplicity="0..1" />
+    <End Type="KitapProjesiModel.Kitaplar" Role="Kitaplar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="YayinEvleri">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Kitaplar">
+        <PropertyRef Name="YayinEviID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SiparisDetay_Kitaplar">
+    <End Type="KitapProjesiModel.Kitaplar" Role="Kitaplar" Multiplicity="0..1" />
+    <End Type="KitapProjesiModel.SiparisDetay" Role="SiparisDetay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kitaplar">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SiparisDetay">
+        <PropertyRef Name="KitapID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Yorumlar_Kitaplar">
+    <End Type="KitapProjesiModel.Kitaplar" Role="Kitaplar" Multiplicity="0..1" />
+    <End Type="KitapProjesiModel.Yorumlar" Role="Yorumlar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kitaplar">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Yorumlar">
+        <PropertyRef Name="KitapID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,130 @@
+﻿@model Proje.Models.KargoFirmasi
+@{
+    ViewBag.Title = "Guncelle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
+
+    <script src="~/Scripts/toastr.min.js"></script>
+
+</head>
+<div class="row p-2">
+    <div class="col-md-12 col-sm-12 ">
+
+
+        <div class="container table-bordered table-light ">
+
+            <br />
+
+            <h5 class="text-center">Kargo Firmaları</h5>
+            <br />
+            <br />
+            <form method="post">
+
+
+                <div class="form-group">
+
+                    <label class="col-form-label col-md-3 col-sm-3 label-align">
+                        <span class="required">*</span>
+
+                    </label>
+                    <div class="col-md-6 col-sm-6 ">
+                        <input type="text" name="Id" value="" class="form-control" disabled="disabled" />
+                    </div>
+
+
+                </div>
+                <div class="form-group">
+
+                    <label class="col-form-label col-md-3 col-sm-3 label-align">
+                        Sirket
+                        <span class="required">*</span>
+
+                    </label>
+                    <div class="col-md-6 col-sm-6">
+                        <input type="text" name="Sirket" value="@Model.Sirket" class="form-control" />
+                    </div>
+
+
+                </div>
+                <div class="form-group">
+
+                    <label class="col-form-label col-md-3 col-sm-3 label-align">
+                        Telefon
+                        <span class="required">*</span>
+
+                    </label>
+                    <div class="col-md-6 col-sm-6">
+                        <input type="text" name="Telefon" value="@Model.Telefon" class="form-control" d />
+                    </div>
+
+
+                </div>
+
+                <div class="form-group">
+
+                    <label class="col-form-label col-md-3 col-sm-3 label-align">
+                        WebSitesi
+                        <span class="required">*</span>
+
+                    </label>
+                    <div class="col-md-6 col-sm-6">
+                        <input type="text" name="WebSitesi" value="@Model.WebSitesi" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+
+                        <label class="col-form-label col-md-3 col-sm-3 label-align">
+                            Eposta
+                            <span class="required">*</span>
+
+                        </label>
+                        <div class="col-md-6 col-sm-6">
+                            <input type="text" name="Eposta" value="@Model.Eposta" class="form-control" />
+                        </div>
+
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <label class="col-form-label col-md-3 col-sm-3 label-align">
+                        Adres
+                        <span class="required">*</span>
+
+                    </label>
+                    <div class="col-md-6 col-sm-6">
+                        <textarea type="text" name="Adres" rows="5" value="@Model.Adres" class="form-control">@Model.Adres</textarea>
+                    </div>
+
+
+                </div>
+                <div class="In_solid"></div>
+                <div class="form-group">
+                    <div class="col-md-9 offset-md-3">
+                        <button type="submit" class="btn btn-success"> Kaydet</button>
+                        <button type="reset" class="btn btn-primary">Temizle</button>
+                        <button type="button" class="btn btn-primary">İptal</button>
+
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+@if (TempData["sonuc"] != null && TempData["sonuc"].ToString() == "1")
+{
+    <script type="text/javascript">
+
+        toastr["info"]("Kaydetme İşleminiz Başarili Bir Şekilde Gerçekleşti", "Mesaj")
+    </script>
+}
+
+
+
+

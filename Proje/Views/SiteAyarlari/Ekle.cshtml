@@ -1,0 +1,211 @@
+﻿
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <head>
+        <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+        <script src="~/Scripts/toastr.min.js"></script>
+        <link href="~/Content/toastr.min.css" rel="stylesheet" />
+    </head>
+    <div class="row p-2">
+        <div class="col-md-6">
+            <div class="container table-bordered table-light">
+                <br />
+                <br />
+                <form method="post" action="Seo">
+                    <h3>Seo Ayarları</h3>
+
+                    @foreach (var item in ViewBag.seo)
+                    {
+
+
+                        <div class="form-group row">
+                            <label class="col-md-3">Id</label>
+                            <div class="col-md-9 col-sm-9">
+                                <input type="text" disabled="disabled" value="@item.Id" name="" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-3">Başlık</label>
+                            <div class="col-md-9 col-sm-9">
+                                <input type="text" placeholder="Baslık" value="@item.Baslik" name="Baslik" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-3">Isım</label>
+                            <div class="col-md-9 col-sm-9">
+                                <input type="text" placeholder="İsim" value="@item.Isım" name="Isım" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-3">AnahtarKelime</label>
+                            <div class="col-md-9 col-sm-9">
+                                <input type="text" placeholder="Anahtar Kelime" value="@item.AnahtarKelime" name="AnahtarKelime" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-3">Harita</label>
+                            <div class="col-md-9 col-sm-9">
+                                <input type="text" placeholder="Harita" value="@item.Harita" name="Harita" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="In_solid"></div>
+                        <div class="form-group">
+                            <div class="col-md-9 offset-md-3">
+                                <button type="submit" class="btn btn-success">Kaydet</button>
+                                <button type="reset" class="btn btn-primary">Temizle</button>
+                            </div>
+                        </div>
+                    }
+                </form>
+
+
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="container table-bordered table-light">
+                <br />
+                <br />
+                <form method="post" action="SiteAyarlari">
+                    <h3>Site Ayarları</h3>
+
+                    @foreach (var item in ViewBag.siteAyarlari)
+                    {
+
+
+                        <div class="form-group row">
+                            <label class="col-md-3">Id</label>
+                            <div class="col-md-9 col-sm-9">
+                                <input type="text" disabled="disabled" value="@item.Id" name="" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-3">Telefon</label>
+                            <div class="col-md-9 col-sm-9">
+                                <input type="text" placeholder="Telefon" value="@item.Telefon" name="Telefon" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-3">Adres</label>
+                            <div class="col-md-9 col-sm-9">
+                                <input type="text" placeholder="Adres" value="@item.Adres" name="Adres" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-3">Eposta</label>
+                            <div class="col-md-9 col-sm-9">
+                                <input type="text" placeholder="Eposta" value="@item.Eposta" name="Eposta" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="In_solid"></div>
+                        <div class="form-group">
+                            <div class="col-md-9 offset-md-3">
+                                <button type="submit" class="btn btn-success">Kaydet</button>
+                                <button type="reset" class="btn btn-primary">Temizle</button>
+                            </div>
+                        </div>
+
+                    }
+                </form>
+
+
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="container table-bordered table-light">
+                <br />
+                <br />
+                <form method="post" action="MailAyarlari">
+                    <h3>Mail Ayarları</h3>
+
+                    @foreach (var item in ViewBag.mailAyarlari)
+                    {
+
+
+                        <div class="form-group row">
+                            <label class="col-md-3">Id</label>
+                            <div class="col-md-9 col-sm-9">
+                                <input type="text" disabled="disabled" value="@item.Id" name="" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-3">GondericiBilgisi</label>
+                            <div class="col-md-9 col-sm-9">
+                                <input type="text" placeholder="Gonderici Bilgisi" value="@item.GondericiBilgisi" name="GondericiBilgisi" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-3">Smtp_server</label>
+                            <div class="col-md-9 col-sm-9">
+                                <input type="text" placeholder="Smtp_server" value="@item.Smtp_server" name="Smtp_server" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-3">Smtp_port</label>
+                            <div class="col-md-9 col-sm-9">
+                                <input type="text" placeholder="Smtp_port" value="@item.Smtp_port" name="Smtp_port" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-3">MailGonderici</label>
+                            <div class="col-md-9 col-sm-9">
+                                <input type="text" placeholder="MailGonderici" value="@item.MailGonderici" name="MailGonderici" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-3">Eposta</label>
+                            <div class="col-md-9 col-sm-9">
+                                <input type="text" placeholder="Eposta" value="@item.Eposta" name="Eposta" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-3">EpostaSifresi</label>
+                            <div class="col-md-9 col-sm-9">
+                                <input type="text" placeholder="Eposta Şifresi" value="@item.EpostaSifresi" name="EpostaSifresi" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="In_solid"></div>
+                        <div class="form-group">
+                            <div class="col-md-9 offset-md-3">
+                                <button type="submit" class="btn btn-success">Kaydet</button>
+                                <button type="reset" class="btn btn-primary">Temizle</button>
+                            </div>
+                        </div>
+
+
+                    }
+
+
+                </form>
+
+
+            </div>
+        </div>
+        @if (TempData["sonuc"] != null && TempData["sonuc"].ToString() == "1")
+        {
+            <script type="text/javascript">
+                toastr["info"]("Kaydetme İşlemi Başarılı Bir Şekilde Gerçekleşti", "Mesaj")
+
+            </script>
+        }
+    </div>
+

@@ -1,0 +1,72 @@
+﻿@model Proje.Models.Siparis
+@{
+    ViewBag.Title = "SiparisDetay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="col-md-12 col-sm-12">
+        <div class="card-body">
+
+
+            <h2>Siparişi Düzenle</h2>
+           
+            <form method="post">
+                @foreach (var item in Model)
+                {
+
+
+                    <div class="form-group">
+                        <label>Müşteri Adı</label>
+                        <input type="text" name="Adi" value="@Model.Musteri.Adi" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Müşteri Soyadı</label>
+                        <input type="text" name="Soyadi" value="@Model.Musteri.Soyadi" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Kitap Adı</label>
+                        <input type="text" name="Adi" value="@Model.SiparisDetay.Kitaplar.Adi" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Fiyat</label>
+                        <input type="text" name="Fiyat" value="@Model.SiparisDetay.Fiyat" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Adet</label>
+                        <input type="text" name="Miktar" value="@Model.SiparisDetay.Miktar" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>E-posta</label>
+                        <input type="text" name="Eposta" value="@Model.Musteri.Eposta" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Adres</label>
+                        <br />
+                        <textarea rows="1">@Model.Musteri.TeslimatAdresi</textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Ödeme Yöntemi</label>
+                        <input type="text" name="Tanim" value="@Model.SiparisDetay.OdemeYontemi.Tanim" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Kargo</label>
+                        <input type="text" name="Sirket" value="@Model.SiparisDetay.KargoFirmasi.Sirket" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Sipariş Durum</label>
+                        @Html.DropDownList("SiparisDurumuID", (List<SelectListItem>)ViewBag.siparisdurum, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                }
+                <button type="submit" class="btn btn-primary">Kaydet</button>
+            </form>
+        </div>
+        
+    </div>
+

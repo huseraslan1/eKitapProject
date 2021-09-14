@@ -1,0 +1,19 @@
+﻿@model List<Arayuz.model.Kategoriler>
+
+
+
+@foreach (var item in Model.Where(x => x.UstKategoriID == 0))
+{
+
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+
+                        <a href="/Kitaplar/KategoriListesi/@item.Id">
+                            <span class="badge pull-right"></span>
+                            @item.Tanim
+                        </a>
+                    </h4>
+                </div>
+
+}
+

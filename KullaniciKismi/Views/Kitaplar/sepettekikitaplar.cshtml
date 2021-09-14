@@ -1,0 +1,252 @@
+﻿@model KullaniciKismi.Models.KullaniciSepet
+
+<head>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
+    <script src="~/Scripts/toastr.min.js"></script>
+</head>
+
+@if (Session["kullanıcı"] == null)
+{
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-10 col-md-offset-1">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Ürün</th>
+                            <th>Miktar</th>
+                            <th class="text-center">Birim Fiyatı</th>
+                            <th class="text-center">Toplam</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.SepetDetay)
+                        {
+                            <tr>
+                                <td class="col-md-8 col-md-6">
+                                    <div class="media">
+                                        @if (item.Kitap.Resim != null && item.Kitap.Resim != "")
+                                        {
+                                            if (item.Kitap.Resim.Split(';')[0].Length > 0)
+                                            {
+                                                <a class="thumbnail pull-left">
+                                                    <img class="media-object" src="http://localhost:54288/\Content\resim\@item.Kitap.Resim.Split(';')[0]"
+                                                         style="width:80px;height:50px" />
+                                                </a>
+                                            }
+                                        }
+                                        <div class="media-body">
+                                            <h4 class="media-heading"><a href="#">@item.Kitap.Adi</a></h4>
+                                            <h5 class="media-heading"> Stok Kodu: <a href="#">@item.Kitap.StokKodu</a></h5>
+                                            <span>Yazar: </span><span class="text-warning"><strong>@item.Kitap.Yazar</strong></span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="col-md-1" style="text-align: center">
+                                    <input type="email" class="form-control" id="exampleInputEmail1" value="@item.Miktar">
+                                </td>
+                                <td class="col-sm-1 col-md-1 text-center"><strong>@item.Kitap.fiyat TL</strong></td>
+                                <td class="col-sm-1 col-md-1 text-center"><strong>@item.Toplam TL</strong></td>
+                                <td class="col-sm-1 col-md-1">
+                                    <form action="/Kitaplar/Sepettencikar" method="post">
+                                        <input type="hidden" value="@item.Kitap.Id" name="KitapID" />
+                                        <button type="submit" class="btn btn-danger">
+                                            <span class="glyphicon glyphicon-remove"></span> Sil
+                                        </button>
+                                    </form>
+
+                                </td>
+                            </tr>
+                        }
+
+                        <tr>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td><h5>Ara Toplam</h5></td>
+                            <td class="text-right"><h5><strong>@Model.Aratoplam() TL</strong></h5></td>
+                        </tr>
+                        <tr>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td><h5>KDV</h5></td>
+                            <td class="text-right"><h5><strong>@Model.Kdv() TL</strong></h5></td>
+                        </tr>
+                        <tr>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td><h3>Genel Toplam</h3></td>
+                            <td class="text-right"><h3><strong>@Model.ToplamTutar() TL</strong></h3></td>
+                        </tr>
+                        <tr>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>
+                                <a href="/Home/Index">
+                                    <button type="button" class="btn btn-default">
+                                        <span class="glyphicon glyphicon-shopping-cart"></span> Alışverişe Devam Et
+                                    </button>
+                                </a>
+                            </td>
+
+                            <td>
+
+                                <a href="#modal-id" data-toggle="modal">
+                                    <button type="button" class="btn btn-success">
+                                        Alışverişi Tamamla <span class="glyphicon glyphicon-play"></span>
+                                    </button>
+                                </a>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+    <div tabindex="-1" class="modal fade" id="modal-id" role="dialog">
+        <form method="post" action="/Giris/Giris">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" aria-hidden="true" type="button" data-dismiss="modal">×</button>
+
+                        <div class="container">
+                            <div class="row">
+                                <h2>Lütfen Üye Girişi Yapınız</h2>
+                                <ul class="ds-btn">
+                                    <p><input type="text" class="span12" name="Eposta" placeholder="Eposta"></p>
+                                    <p><input type="password" class="span12" name="Sifre" placeholder="Sifre"></p>
+                                    <p>
+
+                                        <button type="submit" class="btn btn-primary">Giriş</button>
+                                        <br />
+                                        <br />
+                                        <a href="#modal-sifre" data-toggle="modal">Şifremi Unuttum</a>
+                                    </p>
+
+
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+}
+else
+{
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-10 col-md-offset-1">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Ürün</th>
+                            <th>Miktar</th>
+                            <th class="text-center">Birim Fiyatı</th>
+                            <th class="text-center">Toplam</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.SepetDetay)
+                        {
+                            <tr>
+                                <td class="col-md-8 col-md-6">
+                                    <div class="media">
+                                        @if (item.Kitap.Resim != null && item.Kitap.Resim != "")
+                                        {
+                                            if (item.Kitap.Resim.Split(';')[0].Length > 0)
+                                            {
+                                                <a class="thumbnail pull-left">
+                                                    <img class="media-object" src="http://localhost:54288/\Content\resim\@item.Kitap.Resim.Split(';')[0]"
+                                                         style="width:80px;height:50px" />
+                                                </a>
+                                            }
+                                        }
+                                        <div class="media-body">
+                                            <h4 class="media-heading"><a href="#">@item.Kitap.Adi</a></h4>
+                                            <h5 class="media-heading"> Stok Kodu: <a href="#">@item.Kitap.StokKodu</a></h5>
+                                            <span>Yazar: </span><span class="text-warning"><strong>@item.Kitap.Yazar</strong></span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="col-md-1" style="text-align: center">
+                                    <input type="email" class="form-control" id="exampleInputEmail1" value="@item.Miktar">
+                                </td>
+                                <td class="col-sm-1 col-md-1 text-center"><strong>@item.Kitap.fiyat TL</strong></td>
+                                <td class="col-sm-1 col-md-1 text-center"><strong>@item.Toplam TL</strong></td>
+                                <td class="col-sm-1 col-md-1">
+                                    <form action="/Kitaplar/Sepettencikar" method="post">
+                                        <input type="hidden" value="@item.Kitap.Id" name="KitapID" />
+                                        <button type="submit" class="btn btn-danger">
+                                            <span class="glyphicon glyphicon-remove"></span> Sil
+                                        </button>
+                                    </form>
+
+                                </td>
+                            </tr>
+                        }
+
+                        <tr>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td><h5>Ara Toplam</h5></td>
+                            <td class="text-right"><h5><strong>@Model.Aratoplam() TL</strong></h5></td>
+                        </tr>
+                        <tr>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td><h5>KDV</h5></td>
+                            <td class="text-right"><h5><strong>@Model.Kdv() TL</strong></h5></td>
+                        </tr>
+                        <tr>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td><h3>Genel Toplam</h3></td>
+                            <td class="text-right"><h3><strong>@Model.ToplamTutar() TL</strong></h3></td>
+                        </tr>
+                        <tr>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>
+                                <a href="/Home/Index/">
+                                    <button type="button" class="btn btn-default">
+                                        Alışverişe Devam Et  <span class="glyphicon glyphicon-shopping-cart"></span>
+                                    </button>
+                                </a>
+                            </td>
+                            <td>
+
+                                <a href="/Kitaplar/Tamamla/@Session["uyeid"]">
+                                    <button type="button" class="btn btn-success">
+                                        Alışverişi Tamamla <span class="glyphicon glyphicon-play"></span>
+                                    </button>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+

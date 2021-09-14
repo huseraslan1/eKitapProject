@@ -1,0 +1,135 @@
+﻿@model Arayuz.model.Musteri
+@{
+    Layout = null;
+}
+
+<head>
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/css/prettyPhoto.css" rel="stylesheet" />
+    <link href="~/Content/css/price-range.css" rel="stylesheet" />
+    <link href="~/Content/css/animate.css" rel="stylesheet" />
+    <link href="~/Content/css/main.css" rel="stylesheet" />
+    <link href="~/Content/css/responsive.css" rel="stylesheet" />
+
+
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+</head>
+
+<div>
+    @Html.Partial("_UstMenu")
+</div>
+
+<div class="container bootstrap snippet">
+    <div class="row">
+        <div class="col-sm-10"><h1>Kullanıcı Hesabı</h1></div>
+
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <!--left col-->
+
+
+
+            <div class="panel panel-default">
+                <div class="panel-heading">HESAP <i class="fa fa-link fa-1x"></i></div>
+                <ul class="list-group">
+
+                    <li class="list-group-item text-right"><span class="pull-left"><strong><a href="/Kullanici/Guncelle/@Session["uyeid"]">Üyelik Bilgileri</a></strong></span><br /></li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong><a href="/Kullanici/SifreGuncelle/@Session["uyeid"]">Şifre Güncelleme</a></strong></span><br /></li>
+                </ul>
+
+            </div>
+
+
+
+
+
+
+        </div><!--/col-3-->
+        <div class="col-sm-9">
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#home">Şifre Güncelle</a></li>
+
+            </ul>
+
+
+            <div class="tab-content">
+                <div class="tab-pane active" id="home">
+                    
+                    <form method="post">
+                        <div class="form-group">
+
+                            <div class="col-xs-7">
+                                <label for="first_name"><h4>Mevcut Şifre</h4></label>
+                                <input type="password" class="form-control" readonly="readonly" value="@Model.Sifre" name="Adi" id="Adi" placeholder="Adi">
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <div class="col-xs-7">
+                                <label for="last_name"><h4>Yeni Şifre</h4></label>
+                                <input type="password" class="form-control" value="" name="Sifre" id="Sifre" placeholder="Sifre">
+                            </div>
+                        </div>
+
+                       
+                        <br />
+                        <div class="form-group">
+                            <div class="col-xs-7">
+                                <br />
+                                <input type="hidden" value="@Session["uyeid"]" />
+                                <button value="Kaydet" type="submit" class="btn btn-info">Guncelle</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <hr>
+
+                </div><!--/tab-pane-->
+
+
+            </div><!--/tab-pane-->
+
+        </div><!--/tab-content-->
+
+    </div><!--/col-9-->
+</div><!--/row-->
+
+<script src="~/Content/js/jquery.js"></script>
+<script src="~/Content/js/bootstrap.min.js"></script>
+<script src="~/Content/js/jquery.scrollUp.min.js"></script>
+<script src="~/Content/js/price-range.js"></script>
+<script src="~/Content/js/jquery.prettyPhoto.js"></script>
+<script src="~/Content/js/main.js"></script>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+
+        var readURL = function (input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('.avatar').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+
+        $(".file-upload").on('change', function () {
+            readURL(this);
+        });
+    });
+
+
+</script>
+

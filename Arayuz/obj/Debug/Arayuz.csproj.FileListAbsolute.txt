@@ -1,0 +1,24 @@
+C:\Users\msi\Desktop\KitapProjesi\Proje\Arayuz\bin\Debug\Arayuz.dll.config
+C:\Users\msi\Desktop\KitapProjesi\Proje\Arayuz\bin\Debug\Arayuz.dll
+C:\Users\msi\Desktop\KitapProjesi\Proje\Arayuz\bin\Debug\Arayuz.pdb
+C:\Users\msi\Desktop\KitapProjesi\Proje\Arayuz\bin\Debug\EntityFramework.dll
+C:\Users\msi\Desktop\KitapProjesi\Proje\Arayuz\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\msi\Desktop\KitapProjesi\Proje\Arayuz\bin\Debug\EntityFramework.xml
+C:\Users\msi\Desktop\KitapProjesi\Proje\Arayuz\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\msi\Desktop\KitapProjesi\Proje\Arayuz\obj\Debug\Arayuz.csprojAssemblyReference.cache
+C:\Users\msi\Desktop\KitapProjesi\Proje\Arayuz\obj\Debug\Arayuz.csproj.CoreCompileInputs.cache
+C:\Users\msi\Desktop\KitapProjesi\Proje\Arayuz\obj\Debug\Arayuz.csproj.CopyComplete
+C:\Users\msi\Desktop\KitapProjesi\Proje\Arayuz\obj\Debug\Arayuz.dll
+C:\Users\msi\Desktop\KitapProjesi\Proje\Arayuz\obj\Debug\Arayuz.pdb
+C:\Users\msi\Downloads\Hüseyin Eraslan- Kitap satış web sitesi\KitapProjesi visual studio\Proje\Arayuz\bin\Debug\Arayuz.dll.config
+C:\Users\msi\Downloads\Hüseyin Eraslan- Kitap satış web sitesi\KitapProjesi visual studio\Proje\Arayuz\bin\Debug\Arayuz.dll
+C:\Users\msi\Downloads\Hüseyin Eraslan- Kitap satış web sitesi\KitapProjesi visual studio\Proje\Arayuz\bin\Debug\Arayuz.pdb
+C:\Users\msi\Downloads\Hüseyin Eraslan- Kitap satış web sitesi\KitapProjesi visual studio\Proje\Arayuz\bin\Debug\EntityFramework.dll
+C:\Users\msi\Downloads\Hüseyin Eraslan- Kitap satış web sitesi\KitapProjesi visual studio\Proje\Arayuz\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\msi\Downloads\Hüseyin Eraslan- Kitap satış web sitesi\KitapProjesi visual studio\Proje\Arayuz\bin\Debug\EntityFramework.xml
+C:\Users\msi\Downloads\Hüseyin Eraslan- Kitap satış web sitesi\KitapProjesi visual studio\Proje\Arayuz\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\msi\Downloads\Hüseyin Eraslan- Kitap satış web sitesi\KitapProjesi visual studio\Proje\Arayuz\obj\Debug\Arayuz.csprojAssemblyReference.cache
+C:\Users\msi\Downloads\Hüseyin Eraslan- Kitap satış web sitesi\KitapProjesi visual studio\Proje\Arayuz\obj\Debug\Arayuz.csproj.CoreCompileInputs.cache
+C:\Users\msi\Downloads\Hüseyin Eraslan- Kitap satış web sitesi\KitapProjesi visual studio\Proje\Arayuz\obj\Debug\Arayuz.csproj.CopyComplete
+C:\Users\msi\Downloads\Hüseyin Eraslan- Kitap satış web sitesi\KitapProjesi visual studio\Proje\Arayuz\obj\Debug\Arayuz.dll
+C:\Users\msi\Downloads\Hüseyin Eraslan- Kitap satış web sitesi\KitapProjesi visual studio\Proje\Arayuz\obj\Debug\Arayuz.pdb

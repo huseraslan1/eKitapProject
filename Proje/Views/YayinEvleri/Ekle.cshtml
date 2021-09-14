@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <head>
+        <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+        <script src="~/Scripts/toastr.min.js"></script>
+        <link href="~/Content/toastr.min.css" rel="stylesheet" />
+    </head>
+
+
+    <div class="span3">
+        <form method="post">
+
+            <h3>YayınEvi Ekle</h3>
+            &nbsp; <input type="text" name="Tanim" class="span3" />
+
+            <button type="submit" class="btn btn-primary">Kaydet</button>
+        </form>
+        <br />
+        <br />
+
+        <div class="card-body">
+            <div class="table-responsive ">
+                @Html.Action("YayinEviListe", "YayinEvleri")
+
+            </div>
+        </div>
+
+
+        @if (TempData["sonuc"] != null && TempData["sonuc"].ToString() == "1")
+        {
+            <script type="text/javascript">
+                toastr["info"]("Kayıt Eklendi", "Mesaj")
+
+            </script>
+        }
+    </div>
+

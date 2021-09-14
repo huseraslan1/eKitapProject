@@ -1,0 +1,39 @@
+﻿@model List<Arayuz.model.Kitaplar>
+
+
+    <div class="recommended_items">
+        <h2 class="title text-center">Önerilen Kitaplar</h2>
+
+        <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+                <div class="item active">
+                    @foreach (var item in Model.OrderByDescending(x => x.Id == x.Id).Take(9).ToList())
+                    {
+                        <div class="col-sm-4">
+                            <div class="product-image-wrapper">
+                                <div class="single-products">
+                                    <div class="productinfo text-center">
+
+                                        @if (item.Resim != null && item.Resim != "")
+                                        {
+                                            if (item.Resim.Split(';')[0].Length > 0)
+                                            {
+                                                <img src="http://localhost:54288/\Content/resim/@item.Resim.Split(';')[0]" alt="" width="145" height="235">
+                                            }
+                                        }
+
+                                        <h2>@item.fiyat TL</h2>
+                                        <p>@item.Adi</p>
+                                        <a href="/Kitaplar/Detay/@item.Id" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Ürün incele</a>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+
+                </div>
+        </div>
+                
+    </div>
+

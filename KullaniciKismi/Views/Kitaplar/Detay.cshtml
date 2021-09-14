@@ -1,0 +1,228 @@
+﻿@model  Arayuz.model.Kitaplar
+@{
+    ViewBag.Title = "Detay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Session["kullanıcı"] == null)
+{
+    <div class="col-sm-9 padding-right">
+        <div class="product-details">
+           
+            <div class="col-sm-5">
+                <div class="view-product">
+                    <img src="http://localhost:54288/\Content/resim/@Model.Resim.Split(';')[0]" alt="">
+
+                </div>
+
+
+            </div>
+            <div class="col-sm-7">
+                <div class="product-information">
+                   
+
+                    <h2>@Model.Adi</h2>
+                    <p>Stok kodu: @Model.StokKodu</p><br />
+                    <p>Adet: @Model.Adet</p>
+                    <span>
+                        <span>@Model.fiyat TL</span>
+                        <br />
+                        <form method="post">
+                            <label>Miktar:</label>
+                            <input type="text" value="1" name="Miktar">
+                            <input type="hidden" value="@Model.Id" name="KitapID">
+                            <input type="hidden" value="@Model.fiyat" name="Fiyat">
+                            <br />
+                            <br />
+                            <button type="submit" class="btn btn-fefault cart">
+                                <i class="fa fa-shopping-cart"></i>
+                                Sepete Ekle
+                            </button>
+                        </form>
+                    </span>
+
+                    <p><b>Yazar:</b> @Model.Yazar</p>
+                    <br />
+                    <p><b>YayınEvi:</b> @Model.YayinEvleri.Tanim</p>
+                    <br />
+                    <p><b>Sayfa sayısı:</b>@Model.SayfaSayisi</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-tab shop-details-tab">
+            
+            <div class="col-sm-12">
+                <ul class="nav nav-tabs">
+                    <li><a href="#aciklama" data-toggle="tab">Ürün Açıklaması</a></li>
+                    <li><a href="#teslimat" data-toggle="tab">Teslimat Koşulları</a></li>
+                    <li class="active"><a href="#yorum" data-toggle="tab">Yorumlar</a></li>
+                </ul>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane fade" id="aciklama">
+                    <div class="col-sm-12">
+
+                        <p>
+                            @Model.Aciklama
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="tab-pane fade" id="teslimat">
+                    <div class="col-sm-12">
+                        <p>
+                            Siparişleriniz, banka onayı alındıktan sonra 3 iş günü (Pazartesi-Cuma) içerisinde kargoya teslim edilir. Teslimat adresinin Tuzla ya uzaklığına göre de kargo şirketi 1-3 gün içerisinde siparişinizi size ulaştıracaktır.
+                            Tarafımızdan kaynaklanan bir aksilik olması halinde ise size üyelik bilgilerinizden yola çıkılarak haber verilecektir. Bu yüzden üyelik bilgilerinizin eksiksiz ve doğru olması önemlidir. Bayram ve tatil günlerinde teslimat yapılmamaktadır.
+                            Seçtiğiniz ürünlerin tamamı anlaşmalı olduğumuz  kargo şirketleri tarafından size teslim edilecektir.
+                            Satın aldığınız ürünler bir teyit e-posta'sı ile tarafınıza bildirilecektir.
+                            www.KitapDunyasi.com online alışveriş sitesidir. Aynı anda birden çok kullanıcıya alışveriş yapma imkanı tanır. Enderde olsa tüketicinin aynı ürünü alması söz konusudur ve ürün stoklarda tükenmektedir bu durumda ;
+                            Ödemesini internet üzerinden yaptınız ürün eğer stoklarmızda kalmamış ise en az 4 (Dört) en fazla 30 (otuz) gün bekeleme süresi vardır. Ürün bu tarihleri arasında tüketiciye verilemez ise yaptığı ödeme kendisine iade edilir.
+                        </p>
+                    </div>
+                </div>
+
+                @foreach (var item in Model.Yorumlar)
+                {
+                    <div class="col-sm-12">
+                        <ul>
+                            <li><a href=""><i class="fa fa-user"></i>@item.Musteri.Adi</a></li>
+
+                            <li><a href=""><i class="fa fa-calendar-o"></i>@item.Tarih</a></li>
+                        </ul>
+                        <p>@item.Yorum</p>
+                    </div>
+                }
+
+
+            </div>
+
+        </div>
+    </div>
+
+
+}
+
+else
+{
+    <div class="col-sm-9 padding-right">
+        <div class="product-details">
+            
+            <div class="col-sm-5">
+                <div class="view-product">
+                    <img src="http://localhost:54288/\Content/resim/@Model.Resim.Split(';')[0]" alt="">
+                </div>
+            </div>
+            <div class="col-sm-7">
+                <div class="product-information">
+                    
+                    <h2>@Model.Adi</h2>
+                    <p>Stok kodu:@Model.StokKodu</p> <br />
+                    <p>Adet: @Model.Adet</p>
+                    <span>
+                        <span>@Model.fiyat TL</span>
+                        <br />
+                        <form method="post">
+                            <label>Miktar:</label>
+                            <input type="text" value="1" name="Miktar">
+                            <input type="hidden" value="@Model.Id" name="KitapID">
+                            <input type="hidden" value="@Model.fiyat" name="Fiyat">
+                            <br />
+                            <br />
+                            <button type="submit" class="btn btn-fefault cart">
+                                <i class="fa fa-shopping-cart"></i>
+                                Sepete Ekle
+                            </button>
+                        </form>
+                    </span>
+                    <p><b>Yazar:</b> @Model.Yazar</p>
+                    <br />
+                    <p><b>YayınEvi:</b> @Model.YayinEvleri.Tanim</p>
+                    <br />
+                    <p><b>Sayfa sayısı:</b>@Model.SayfaSayisi</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-tab shop-details-tab">
+           
+            <div class="col-sm-12">
+                <ul class="nav nav-tabs">
+                    <li><a href="#aciklama" data-toggle="tab">Ürün Açıklaması</a></li>
+
+                    <li><a href="#teslimat" data-toggle="tab">Teslimat Koşulları</a></li>
+                    <li class="active"><a href="#yorum" data-toggle="tab">Yorumlar</a></li>
+                </ul>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane fade" id="aciklama">
+                    <div class="col-sm-12">
+
+                        <p>
+                            @Model.Aciklama
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="tab-pane fade" id="teslimat">
+                    <div class="col-sm-12">
+                        <p>
+                            Siparişleriniz, banka onayı alındıktan sonra 3 iş günü (Pazartesi-Cuma) içerisinde kargoya teslim edilir. Teslimat adresinin Tuzla ya uzaklığına göre de kargo şirketi 1-3 gün içerisinde siparişinizi size ulaştıracaktır.
+                            Tarafımızdan kaynaklanan bir aksilik olması halinde ise size üyelik bilgilerinizden yola çıkılarak haber verilecektir. Bu yüzden üyelik bilgilerinizin eksiksiz ve doğru olması önemlidir. Bayram ve tatil günlerinde teslimat yapılmamaktadır.
+                            Seçtiğiniz ürünlerin tamamı anlaşmalı olduğumuz  kargo şirketleri tarafından size teslim edilecektir.
+                            Satın aldığınız ürünler bir teyit e-posta'sı ile tarafınıza bildirilecektir.
+                            www.KitapDunyasi.com online alışveriş sitesidir. Aynı anda birden çok kullanıcıya alışveriş yapma imkanı tanır. Enderde olsa tüketicinin aynı ürünü alması söz konusudur ve ürün stoklarda tükenmektedir bu durumda ;
+                            Ödemesini internet üzerinden yaptınız ürün eğer stoklarmızda kalmamış ise en az 4 (Dört) en fazla 30 (otuz) gün bekeleme süresi vardır. Ürün bu tarihleri arasında tüketiciye verilemez ise yaptığı ödeme kendisine iade edilir.
+                        </p>
+                    </div>
+                </div>
+            </div>
+                <div class="tab-pane fade active in" id="Yorum">
+
+                    <div>
+                        <a class="btn btn-default" href="#model-id" data-toggle="modal">Yorum Yaz</a>  <br /> <br />
+                    </div>
+                    <div tabindex="-1" class="modal fade" id="model-id" role="dialog">
+
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button class="close" aria-hidden="true" type="button" data-dismiss="modal">×</button>
+                                    <h3>Yorum Ekle</h3>
+                                </div>
+                                <form method="post" action="/Kitaplar/YorumEkle">
+                                    <div class="modal-body">
+                                        <textarea class="form-control" name="Yorum"></textarea>
+                                        <input type="hidden" name="KitapID" value="@Model.Id" />
+                                        <input type="hidden" name="MusteriID" value="@Session["uyeid"]" />
+                                        <input type="hidden" name="Tarih" value="@DateTime.Now" />
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit">Gönder</button><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>               
+                @foreach (var item in Model.Yorumlar)
+                {
+                    <div class="col-sm-12">
+                        <ul>
+                            <li><a href=""><i class="fa fa-user"></i>@item.Musteri.Adi</a></li>
+
+                            <li><a href=""><i class="fa fa-calendar-o"></i>@item.Tarih</a></li>
+                        </ul>
+                        <p>@item.Yorum</p>
+                    </div>
+                }
+
+            </div>
+        </div>
+
+
+
+    </div>
+}
+

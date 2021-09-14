@@ -1,0 +1,42 @@
+﻿@*@model List<Arayuz.model.Kitaplar>
+    <div class="recommended_items">
+        <!--recommended_items-->
+        <h2 class="title text-center">Önerilenler</h2>
+
+        <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="item active">  *@
+@*@foreach (var item in Model)*@
+@*{
+                        <div class="col-sm-4">
+                            <div class="product-image-wrapper">
+                                <div class="single-products">
+                                    <div class="productinfo text-center">
+                                        @if (item.Resim != null && item.Resim != "")
+                                        {
+                                            if (item.Resim.Split(';')[0].Length > 0)
+                                            {
+                                                <img src="/Content/resim/@item.Resim.Split(';')[0]" alt="">
+                                            }
+                                        }
+                                        <h2>@item.fiyat</h2>
+                                        <p>@item.Adi</p>
+                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>İncele</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+
+            </div>
+            <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
+                <i class="fa fa-angle-left"></i>
+            </a>
+            <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        </div>
+    </div>*@

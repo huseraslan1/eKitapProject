@@ -1,0 +1,109 @@
+﻿@model KullaniciKismi.Models.KullaniciSepet
+@{
+    Layout = null;
+}
+
+    <head>
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+        <link href="~/Content/css/Tamamlacss.css" rel="stylesheet" />
+        <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
+        <link href="~/Content/css/prettyPhoto.css" rel="stylesheet" />
+        <link href="~/Content/css/price-range.css" rel="stylesheet" />
+        <link href="~/Content/css/animate.css" rel="stylesheet" />
+        <link href="~/Content/css/main.css" rel="stylesheet" />
+        <link href="~/Content/css/responsive.css" rel="stylesheet" />
+
+        <link rel="shortcut icon" href="images/ico/favicon.ico">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+    </head>
+
+    <div class="container">
+        <div class="row">
+            <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <address>
+                            <strong>@TempData["Adi"]</strong>
+                       @TempData["adres"] 
+                           
+                        </address>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6 text-right">
+                        <p>
+                            <em>Tarih:@DateTime.Now</em>
+                        </p>
+                        <p>
+                            <em>Sipariş no:</em>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="text-center">
+                        <h1>Sipariş Alındı</h1>
+                    </div>
+                    </span>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Ürün</th>
+                                <th>Adet</th>
+                                <th class="text-center">Fiyat</th>
+                                <th class="text-center">Toplam</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model.SepetDetay)
+                            {
+
+                                <tr>
+                                    <td class="col-md-9"><em>@item.Kitap.Adi</em></td>
+                                    <td class="col-md-1" style="text-align: center"> @item.Miktar </td>
+                                    <td class="col-md-1 text-center">@item.Kitap.fiyat TL</td>
+                                    <td class="col-md-1 text-center">@item.Toplam TL</td>
+                                </tr>
+
+                            }
+
+                            <tr>
+                                <td>   </td>
+                                <td>   </td>
+                                <td class="text-right">
+                                    <p>
+                                        <strong>Ara Toplam: </strong>
+                                    </p>
+                                    <p>
+                                        <strong>KDV: </strong>
+                                    </p>
+                                </td>
+                                <td class="text-center">
+                                    <p>
+                                        <strong>@Model.Aratoplam() TL</strong>
+                                    </p>
+                                    <p>
+                                        <strong>@Model.Kdv() TL</strong>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>   </td>
+                                <td>   </td>
+                                <td class="text-right"><h4><strong>Genel Toplam: </strong></h4></td>
+                                <td class="text-center text-danger"><h4><strong>@Model.ToplamTutar() TL</strong></h4></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <a href="/Home/Index/">
+                        <button type="button" class="btn btn-default">
+                            Tamam
+                        </button>
+                </div>
+            </div>
+        </div>

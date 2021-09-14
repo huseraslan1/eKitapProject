@@ -1,0 +1,280 @@
+﻿
+<head>
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
+    <script src="~/Scripts/toastr.min.js"></script>
+</head>
+
+@if (Session["kullanıcı"] == null)
+{
+    <header id="header">
+        <!--header-->
+
+
+        <div class="header-middle">
+            <!--header-middle-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 clearfix">
+                        <div class="logo pull-left">
+                            <a href="/Home/Index"><img src="~/Content/images/home/kitapdunyasi.png" alt="" height="60" width="100"></a>
+                        </div>
+
+                    </div>
+                    <div class="col-md-8 clearfix">
+                        <div class="shop-menu clearfix pull-right">
+                            <ul class="nav navbar-nav">
+                                <li><a href="/Kitaplar/Sepetsayfasi"><i class="fa fa-shopping-cart"></i> Sepet</a></li>
+                                <li><a href="#modal-id" data-toggle="modal"><i class="fa fa-lock"></i> Üye Giriş</a></li>
+                                <li><a href="/Giris/UyeKayit"><i class="fa fa-lock"></i> Kayıt Ol</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--/header-middle-->
+
+        <div class="header-bottom">
+            <!--header-bottom-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="mainmenu pull-left">
+                            <ul class="nav navbar-nav collapse navbar-collapse">
+                                <li><a href="/Home/Index" class="active">Anasayfa</a></li>
+                                <li><a href="/Kitaplar/Kategori">Tüm Kategoriler</a></li>
+                                <li class="dropdown">
+                                    <a href="#">Site Hakkında<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        <li><a href="/Home/Hakkimizda">Hakkımızda</a></li>
+                                        <li><a href="/Home/IadeKosullari">İade Koşulları</a></li>
+                                        <li><a href="/Home/GizlilikIlkesi">Gizlilik İlkesi</a></li>
+                                        <li><a href="/Home/UyeSozlesmesi">Üye Sözleşmesi</a></li>
+                                    </ul>
+                                </li>
+                                @*<li><a href="/Kitaplar/Kategori">Tüm Kategoriler</a></li>*@
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="search_box pull-right">
+                            <input type="text" placeholder="Ara">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--/header-bottom-->
+
+
+
+        <div tabindex="-1" class="modal fade" id="modal-id" role="dialog">
+            <form method="post" action="/Giris/Giris">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="close" aria-hidden="true" type="button" data-dismiss="modal">×</button>
+
+                            <div class="container">
+                                <div class="row">
+                                    <h2>Lütfen Üye Girişi Yapınız</h2>
+                                    <ul class="ds-btn">
+
+
+                                        <p><input type="text" class="span12" name="Eposta" placeholder="Eposta"></p>
+                                        <p><input type="password" class="span12" name="Sifre" placeholder="Sifre"></p>
+                                        <p>
+                                            <button type="submit" class="btn btn-primary">Giriş</button>
+                                            <br />
+                                            <br />
+                                            <a href="#modal-sifre" data-toggle="modal">Şifremi Unuttum</a>
+                                        </p>
+
+
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div tabindex="-1" class="modal fade" id="modal-sifre" role="dialog">
+            <form method="post" action="/Giris/SifreHatirlat">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="close" aria-hidden="true" type="button" data-dismiss="modal">×</button>
+
+                            <div class="container">
+                                <div class="row">
+                                    <h2>Parolanızı mı unuttunuz?</h2>
+                                    <p>Üç kolay adımda şifrenizi değiştirin. Bu, şifrenizi korumanıza yardımcı olacaktır!</p><br />
+                                    <ol class="list-unstyled">
+                                        <li><span class="text-primary text-medium">1. </span> E-posta adresinizi aşağıya girin.</li>
+
+                                        <li><span class="text-primary text-medium">2. </span>Sistemimiz size Şifrenizi gönderecektir.</li>
+
+                                        <li><span class="text-primary text-medium">3. </span>E-Postanızda spam bölümünü kontrol ediniz.</li>
+
+                                        <li><span class="text-primary text-medium">4. </span> Şifrenizi gönderildikten sonra giriş yapabilirsiniz.</li>
+                                        <br />
+                                    </ol>
+                                    <ul class="ds-btn">
+
+
+                                        <p> <input type="email" name="Eposta" id="Eposta" class="span12" placeholder="E-Posta Adresi" tabindex="4"></p>
+
+
+                                        <p><button type="submit" class="btn btn-primary">Gönder</button> </p>
+
+
+
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </header>
+
+
+}
+else
+{
+    <header id="header">
+        <!--header-->
+
+
+        <div class="header-middle">
+            <!--header-middle-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 clearfix">
+                        <div class="logo pull-left">
+                            <a href="/Home/Index"><img src="~/Content/images/home/kitapdunyasi.png" alt="" height="60" width="100"></a>
+                        </div>
+
+                    </div>
+                    <div class="col-md-8 clearfix">
+                        <div class="shop-menu clearfix pull-right">
+                            <ul class="nav navbar-nav">
+                                <li><a href="/Kitaplar/Sepetsayfasi"><i class="fa fa-shopping-cart"></i> Sepet</a></li>
+                                <li><a href="/Kullanici/Index" data-toggle="modal">Hoşgeldin @Session["kullanıcı"]</a></li>
+                                <li><a href="/Kullanici/Index"><i class="fa-fa-lock"></i>Hesabım</a></li>
+                                <li><a href="/Giris/Cikis"><i class="fa fa-lock"></i> Çıkış Yap</a></li>                               
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--/header-middle-->
+
+        <div class="header-bottom">
+            <!--header-bottom-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="mainmenu pull-left">
+                            <ul class="nav navbar-nav collapse navbar-collapse">
+                                <li><a href="/Home/Index" class="active">Anasayfa</a></li>
+                                <li><a href="/Kitaplar/Kategori">Tüm Kategoriler</a></li>
+                                <li class="dropdown">
+                                    <a href="#">Site Hakkında<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        <li><a href="/Home/Hakkimizda">Hakkımızda</a></li>
+                                        <li><a href="/Home/IadeKosullari">İade Koşulları</a></li>
+                                        <li><a href="/Home/GizlilikIlkesi">Gizlilik İlkesi</a></li>
+                                        <li><a href="/Home/UyeSozlesmesi">Üye Sözleşmesi</a></li>
+                                    </ul>
+                                </li>
+                                @*<li><a href="/Kitaplar/Kategori">Tüm Kategoriler</a></li>*@
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="search_box pull-right">
+                            <input type="text" placeholder="Search">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--/header-bottom-->
+
+
+
+        <div tabindex="-1" class="modal fade" id="modal-id" role="dialog">
+            <form method="post" action="/Giris/Giris">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="close" aria-hidden="true" type="button" data-dismiss="modal">×</button>
+
+                            <div class="container">
+                                <div class="row">
+                                    <h2>Lütfen Üye Girişi Yapınız</h2>
+                                    <ul class="ds-btn">
+
+
+                                        <p><input type="text" class="span12" name="Eposta" id="Eposta" placeholder="Eposta"></p>
+                                        <p><input type="password" class="span12" name="Sifre" id="Sifre" placeholder="Sifre"></p>
+                                        <p>
+                                            <button type="submit" class="btn btn-primary">Giriş</button>
+                                            <br />
+                                            <br />
+                                            <a href="#modal-sifre" data-toggle="modal">Şifremi Unuttum</a>
+                                        </p>
+
+
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </header>
+
+
+}
+
+@if (TempData["sonuc"] != null && TempData["sonuc"].ToString() == "1")
+{
+    <script type="text/javascript">
+        toastr["info"]("Giriş Başarılı", "Mesaj")
+
+    </script>
+}
+@if (TempData["sonuc"] != null && TempData["sonuc"].ToString() == "0")
+{
+    <script type="text/javascript">
+        toastr["info"]("Eposta veya Şifreniz Hatalı!", "Mesaj")
+
+    </script>
+}

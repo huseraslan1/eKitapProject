@@ -1,0 +1,31 @@
+﻿@model List<Proje.Models.Kategoriler>
+@{
+    ViewBag.Title = "AltKategori";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12">
+        <div class="card-body">
+
+            <label>Kategori</label>
+            <br />
+            <form method="post">
+                <div>
+                    @Html.DropDownList("Id", (List<SelectListItem>)ViewBag.kategori, htmlAttributes: new { @class = "form-control" })
+                </div>
+
+                <br />
+                <label>Alt Kategori</label>
+                <br />
+
+                <input class="col-4" type="text" name="Tanim" />
+                <br /> <br />
+
+                <button type="submit" class="btn btn-primary">Kaydet</button>
+            </form>
+            @Html.Action("KategoriListe", "Kategoriler")
+        </div>
+    </div>
+</div>
+

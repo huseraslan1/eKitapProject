@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="252a71a8bc994f318886581105a4c9d0" Name="Diagram1">
+        <EntityTypeShape EntityType="KitapProjesiModel.Giris" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KitapProjesiModel.KargoFirmasi" Width="1.5" PointX="0.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KitapProjesiModel.Kategoriler" Width="1.5" PointX="3.75" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KitapProjesiModel.MailAyarlari" Width="1.5" PointX="5.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KitapProjesiModel.Musteri" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="KitapProjesiModel.Seo" Width="1.5" PointX="7.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KitapProjesiModel.SepetID" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KitapProjesiModel.SiparisDurumu" Width="1.5" PointX="3" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KitapProjesiModel.SiparisGecmisi" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KitapProjesiModel.SiteAyarlari" Width="1.5" PointX="9.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KitapProjesiModel.sysdiagram" Width="1.5" PointX="7.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KitapProjesiModel.TeslimatBilgileri" Width="1.5" PointX="3.75" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KitapProjesiModel.Yorumlar" Width="1.5" PointX="8.25" PointY="3.875" IsExpanded="true" />
+        <AssociationConnector Association="KitapProjesiModel.FK_Musteri_Giris1" ManuallyRouted="false" />
+        <AssociationConnector Association="KitapProjesiModel.FK_Musteri_SepetID" ManuallyRouted="false" />
+        <AssociationConnector Association="KitapProjesiModel.FK_Musteri_SiparisGecmisi" ManuallyRouted="false" />
+        <AssociationConnector Association="KitapProjesiModel.FK_Yorumlar_Musteri" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="KitapProjesiModel.Siparis" Width="1.5" PointX="10.5" PointY="10.375" IsExpanded="true" />
+        <AssociationConnector Association="KitapProjesiModel.FK_Siparis_Musteri" />
+        <AssociationConnector Association="KitapProjesiModel.FK_Siparis_SiparisDurumu" />
+        <EntityTypeShape EntityType="KitapProjesiModel.YayinEvleri" Width="1.5" PointX="3.75" PointY="23.125" />
+        <EntityTypeShape EntityType="KitapProjesiModel.OdemeYontemi" Width="1.5" PointX="6" PointY="16.125" />
+        <EntityTypeShape EntityType="KitapProjesiModel.SiparisDetay" Width="1.5" PointX="8.25" PointY="16.375" />
+        <AssociationConnector Association="KitapProjesiModel.FK_SiparisDetay_KargoFirmasi" />
+        <AssociationConnector Association="KitapProjesiModel.FK_Siparis_OdemeYontemi" />
+        <AssociationConnector Association="KitapProjesiModel.FK_SiparisDetay_OdemeYontemi" />
+        <AssociationConnector Association="KitapProjesiModel.FK_Siparis_SiparisDetay" />
+        <AssociationConnector Association="KitapProjesiModel.FK_SiparisDetay_YayinEvleri" />
+        <EntityTypeShape EntityType="KitapProjesiModel.Kitaplar" Width="1.5" PointX="6" PointY="19.125" />
+        <AssociationConnector Association="KitapProjesiModel.FK_Kitaplar_Kategoriler" />
+        <AssociationConnector Association="KitapProjesiModel.FK_Kitaplar_TeslimatBilgileri" />
+        <AssociationConnector Association="KitapProjesiModel.FK_Kitaplar_YayinEvleri" />
+        <AssociationConnector Association="KitapProjesiModel.FK_SiparisDetay_Kitaplar" />
+        <AssociationConnector Association="KitapProjesiModel.FK_Yorumlar_Kitaplar" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

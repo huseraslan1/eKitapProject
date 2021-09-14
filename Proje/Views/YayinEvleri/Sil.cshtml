@@ -1,0 +1,33 @@
+﻿@model Proje.Models.YayinEvleri
+
+@{
+    ViewBag.Title = "Sil";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Sil</h2>
+
+<h3>Bu Yayın Evini Silmek İstiyor musunuz</h3>
+<div>
+    <h4>YayinEvleri</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tanim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tanim)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-default" />
+            
+        </div>
+    }
+</div>
